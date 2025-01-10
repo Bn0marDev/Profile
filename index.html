@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موسى عمر - مطور واجهات ويب محترف</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#2c3e50',
+                        accent: '#e74c3c',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="sidebar fixed top-0 right-0 w-64 h-screen bg-secondary text-white p-6 overflow-y-auto z-20 md:translate-x-0">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold">القائمة</h2>
+                <button id="close-sidebar" class="md:hidden">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <nav>
+                <ul class="space-y-4">
+                    <li><a href="#about" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="user" class="inline-block w-5 h-5 ml-2"></i>عني</a></li>
+                    <li><a href="#projects" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="briefcase" class="inline-block w-5 h-5 ml-2"></i>المشاريع</a></li>
+                    <li><a href="#skills" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="code" class="inline-block w-5 h-5 ml-2"></i>المهارات</a></li>
+                    <li><a href="#testimonials" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="message-circle" class="inline-block w-5 h-5 ml-2"></i>آراء العملاء</a></li>
+                    <li><a href="#contact" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="mail" class="inline-block w-5 h-5 ml-2"></i>اتصل بي</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 md:mr-64">
+            <header class="bg-primary text-white p-4 sticky top-0 z-10 shadow-md">
+                <div class="container mx-auto flex justify-between items-center">
+                    <h1 class="text-3xl font-bold">موسى عمر</h1>
+                    <button id="open-sidebar" class="md:hidden">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </header>
+
+            <main class="container mx-auto mt-8 p-4">
+                <section id="about" class="mb-16 animate__animated animate__fadeIn">
+                    <h2 class="text-4xl font-bold mb-6 text-secondary">نبذة عني</h2>
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <img src="my.png" alt="موسى عمر" class="rounded-full w-48 h-48 object-cover shadow-lg">
+                        <div>
+                            <p class="text-lg leading-relaxed mb-4">مرحبًا! أنا موسى عمر، مطور واجهات ويب محترف مع خبرة تزيد عن 5 سنوات في إنشاء تجارب مستخدم جذابة وتفاعلية. أنا شغوف بتحويل الأفكار إلى واقع رقمي باستخدام أحدث التقنيات وأفضل الممارسات في تطوير الويب.</p>
+                            <p class="text-lg leading-relaxed">لقد عملت مع العديد من العملاء والشركات لتطوير حلول ويب مبتكرة تلبي احتياجاتهم وتتجاوز توقعاتهم. أسعى دائمًا لتحسين مهاراتي وتعلم تقنيات جديدة لتقديم أفضل النتائج لعملائي.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projects" class="mb-16">
+                    <h2 class="text-4xl font-bold mb-6 text-secondary">المشاريع</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                            <img src="/placeholder.svg?height=200&width=300" alt="بروفايل شركة تقنية" class="w-full h-40 object-cover rounded mb-4">
+                            <h3 class="text-xl font-semibold mb-2">بروفايل شركة تقنية</h3>
+                            <p class="text-gray-600 mb-4">تصميم وتطوير موقع ويب تفاعلي لشركة تقنية ناشئة، يعرض خدماتها ومنتجاتها بطريقة جذابة.</p>
+                            <p class="text-primary font-semibold">التقنيات: React, Next.js, Tailwind CSS</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                            <img src="/placeholder.svg?height=200&width=300" alt="منصة تعليم إلكتروني" class="w-full h-40 object-cover rounded mb-4">
+                            <h3 class="text-xl font-semibold mb-2">منصة تعليم إلكتروني</h3>
+                            <p class="text-gray-600 mb-4">تطوير منصة تعليمية تفاعلية تتيح للمستخدمين الوصول إلى الدورات وتتبع تقدمهم.</p>
+                            <p class="text-primary font-semibold">التقنيات: Vue.js, Vuex, Node.js, MongoDB</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                            <img src="/placeholder.svg?height=200&width=300" alt="تطبيق إدارة المهام" class="w-full h-40 object-cover rounded mb-4">
+                            <h3 class="text-xl font-semibold mb-2">تطبيق إدارة المهام</h3>
+                            <p class="text-gray-600 mb-4">تصميم وتطوير تطبيق ويب لإدارة المهام والمشاريع، مع ميزات التعاون وتتبع الوقت.</p>
+                            <p class="text-primary font-semibold">التقنيات: React, Redux, Firebase</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="skills" class="mb-16">
+                    <h2 class="text-4xl font-bold mb-6 text-secondary">المهارات</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+                            <i data-lucide="html" class="w-6 h-6 ml-2 text-primary"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+                            <i data-lucide="css" class="w-6 h-6 ml-2 text-primary"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+                            <i data-lucide="code" class="w-6 h-6 ml-2 text-primary"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+                            <i data-lucide="react" class="w-6 h-6 ml-2 text-primary"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+                            <i data-lucide="vue" class="w-6 h-6 ml-2 text-primary"></i>
+                            <span>Vue.js</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+                            <i data-lucide="server" class="w-6 h-6 ml-2 text-primary"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+                            <i data-lucide="database" class="w-6 h-6 ml-2 text-primary"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+                            <i data-lucide="git-branch" class="w-6 h-6 ml-2 text-primary"></i>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="testimonials" class="mb-16">
+                    <h2 class="text-4xl font-bold mb-6 text-secondary">آراء العملاء</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <p class="text-gray-600 mb-4">"موسى مطور رائع! لقد قام بتطوير موقعنا بكفاءة عالية وفي الوقت المحدد. نحن سعداء جدًا بالنتيجة."</p>
+                            <p class="font-semibold">- أحمد محمد، مدير شركة تقنية</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <p class="text-gray-600 mb-4">"العمل مع موسى كان تجربة رائعة. لديه مهارات تقنية ممتازة وقدرة على فهم احتياجات العميل بسرعة."</p>
+                            <p class="font-semibold">- سارة علي، صاحبة متجر إلكتروني</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" class="mb-16">
+                    <h2 class="text-4xl font-bold mb-6 text-secondary">اتصل بي</h2>
+                    <form class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-semibold mb-2">الاسم</label>
+                            <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-semibold mb-2">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-semibold mb-2">الرسالة</label>
+                            <textarea id="message" name="message" rows="4" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-primary-dark transition flex items-center justify-center w-full md:w-auto">
+                            <i data-lucide="send" class="w-4 h-4 ml-2"></i>
+                            إرسال
+                        </button>
+                    </form>
+                </section>
+            </main>
+
+            <footer class="bg-secondary text-white py-8">
+                <div class="container mx-auto text-center">
+                    <p class="mb-4">&copy; 2023 موسى عمر. جميع الحقوق محفوظة.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="hover:text-primary transition"><i data-lucide="github" class="w-6 h-6"></i></a>
+                        <a href="#" class="hover:text-primary transition"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="#" class="hover:text-primary transition"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Sidebar toggle
+        const sidebar = document.querySelector('.sidebar');
+        const openSidebarBtn = document.getElementById('open-sidebar');
+        const closeSidebarBtn = document.getElementById('close-sidebar');
+
+        openSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.add('open');
+        });
+
+        closeSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (window.innerWidth < 768) {
+                    sidebar.classList.remove('open');
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate__animated');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                if (elementTop < window.innerHeight && elementBottom > 0) {
+                    element.classList.add('animate__fadeInUp');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Initial check on page load
+    </script>
+</body>
+</html>
+
