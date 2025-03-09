@@ -1,243 +1,741 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  Bn0mar.dev  </title>
+    <title>Technology Team - فريق التكنولوجيا الليبي</title>
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Tajawal', sans-serif;
-        }
-        .sidebar {
-            transition: transform 0.3s ease-in-out;
-        }
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(100%);
-            }
-            .sidebar.open {
-                transform: translateX(0);
-            }
-        }
-    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Cairo (Arabic) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
+        // Tailwind Configuration
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
                     colors: {
-                        primary: '#3498db',
-                        secondary: '#2c3e50',
-                        accent: '#e74c3c',
+                        primary: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
+                        },
+                        secondary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        accent: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            300: '#f0abfc',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            800: '#86198f',
+                            900: '#701a75',
+                        },
                     }
                 }
             }
         }
     </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #14b8a6, #3b82f6, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .dark .gradient-text {
+            background: linear-gradient(90deg, #5eead4, #60a5fa, #f0abfc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .neon-border-primary {
+            box-shadow: 0 0 5px #14b8a6, 0 0 10px rgba(20, 184, 166, 0.3);
+            border: 1px solid rgba(20, 184, 166, 0.5);
+        }
+        
+        .dark .neon-border-primary {
+            box-shadow: 0 0 5px #5eead4, 0 0 10px rgba(94, 234, 212, 0.3);
+            border: 1px solid rgba(94, 234, 212, 0.3);
+        }
+        
+        .neon-border-secondary {
+            box-shadow: 0 0 5px #3b82f6, 0 0 10px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+        }
+        
+        .dark .neon-border-secondary {
+            box-shadow: 0 0 5px #60a5fa, 0 0 10px rgba(96, 165, 250, 0.3);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+        
+        .neon-border-accent {
+            box-shadow: 0 0 5px #d946ef, 0 0 10px rgba(217, 70, 239, 0.3);
+            border: 1px solid rgba(217, 70, 239, 0.5);
+        }
+        
+        .dark .neon-border-accent {
+            box-shadow: 0 0 5px #f0abfc, 0 0 10px rgba(240, 171, 252, 0.3);
+            border: 1px solid rgba(240, 171, 252, 0.3);
+        }
+        
+        .transition-theme {
+            transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .glass, .glass-card {
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+            }
+            
+            .nav-scroll {
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Firefox */
+            }
+            
+            .nav-scroll::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Opera */
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-    <div class="flex">
-        <!-- Sidebar -->
-        <aside class="sidebar fixed top-0 right-0 w-64 h-screen bg-secondary text-white p-6 overflow-y-auto z-20 md:translate-x-0">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-2xl font-bold">القائمة</h2>
-                <button id="close-sidebar" class="md:hidden">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-            <nav>
-                <ul class="space-y-4">
-                    <li><a href="#about" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="user" class="inline-block w-5 h-5 ml-2"></i>عني</a></li>
-                    <li><a href="#projects" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="briefcase" class="inline-block w-5 h-5 ml-2"></i>المشاريع</a></li>
-                    <li><a href="#skills" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="code" class="inline-block w-5 h-5 ml-2"></i>المهارات</a></li>
-                    <li><a href="#testimonials" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="message-circle" class="inline-block w-5 h-5 ml-2"></i>آراء العملاء</a></li>
-                    <li><a href="#contact" class="block py-2 px-4 hover:bg-primary rounded transition"><i data-lucide="mail" class="inline-block w-5 h-5 ml-2"></i>اتصل بي</a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <div class="flex-1 md:mr-64">
-            <header class="bg-primary text-white p-4 sticky top-0 z-10 shadow-md">
-                <div class="container mx-auto flex justify-between items-center">
-                    <h1 class="text-3xl font-bold">Bn0mar.dev</h1>
-                    <button id="open-sidebar" class="md:hidden">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
+<body class="font-cairo bg-gray-50 text-gray-800 dark:bg-slate-900 dark:text-gray-100 transition-theme">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="text-2xl font-bold gradient-text">Technology Team</div>
+                </div>
+                
+                <div class="nav-scroll flex items-center space-x-6 space-x-reverse">
+                    <a href="#home" class="relative nav-link text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-theme py-2 whitespace-nowrap">
+                        الرئيسية
+                        <span class="absolute bottom-0 right-0 w-0 h-0.5 bg-primary-500 dark:bg-primary-400 transition-all duration-300"></span>
+                    </a>
+                    <a href="#about" class="relative nav-link text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-theme py-2 whitespace-nowrap">
+                        من نحن
+                        <span class="absolute bottom-0 right-0 w-0 h-0.5 bg-primary-500 dark:bg-primary-400 transition-all duration-300"></span>
+                    </a>
+                    <a href="#services" class="relative nav-link text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-theme py-2 whitespace-nowrap">
+                        خدماتنا
+                        <span class="absolute bottom-0 right-0 w-0 h-0.5 bg-primary-500 dark:bg-primary-400 transition-all duration-300"></span>
+                    </a>
+                    <a href="#team" class="relative nav-link text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-theme py-2 whitespace-nowrap">
+                        فريقنا
+                        <span class="absolute bottom-0 right-0 w-0 h-0.5 bg-primary-500 dark:bg-primary-400 transition-all duration-300"></span>
+                    </a>
+                    <a href="#contact" class="relative nav-link text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-theme py-2 whitespace-nowrap">
+                        تواصل معنا
+                        <span class="absolute bottom-0 right-0 w-0 h-0.5 bg-primary-500 dark:bg-primary-400 transition-all duration-300"></span>
+                    </a>
+                    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-theme focus:outline-none flex-shrink-0">
+                        <i class="fas fa-moon dark:hidden text-lg"></i>
+                        <i class="fas fa-sun hidden dark:block text-lg text-yellow-300"></i>
                     </button>
                 </div>
-            </header>
+            </div>
+        </div>
+    </nav>
 
-            <main class="container mx-auto mt-8 p-4">
-                <section id="about" class="mb-16 animate__animated animate__fadeIn">
-                    <h2 class="text-4xl font-bold mb-6 text-secondary">نبذة عني</h2>
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        <img src="my.png" alt="موسى عمر" class="rounded-full w-48 h-48 object-cover shadow-lg">
-                        <div>
-                            <p class="text-lg leading-relaxed mb-4">مرحبًا! أنا موسى عمر، مطور واجهات ويب محترف مع خبرة تزيد عن 5 سنوات في إنشاء حلول ويب مبتكرة تلبي احتياجات العملاء.</p>
-                            <p class="text-lg leading-relaxed">لقد عملت مع العديد من العملاء والشركات لتطوير حلول ويب مبتكرة تلبي احتياجاتهم.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="projects" class="mb-16">
-                    <h2 class="text-4xl font-bold mb-6 text-secondary">المشاريع</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-                            <img src="company.png" alt="بروفايل شركة تقنية" class="w-full h-40 object-cover rounded mb-4">
-                            <h3 class="text-xl font-semibold mb-2">بروفايل شركة تقنية</h3>
-                            <p class="text-gray-600 mb-4">تصميم وتطوير موقع ويب تفاعلي لشركة تقنية ناشئة، يعرض خدماتها ومنتجاتها بطريقة مبتكرة.</p>
-                            <p class="text-primary font-semibold">التقنيات: React, Next.js, Tailwind CSS</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-                            <img src="ta3lim.png" alt="منصة تعليم إلكتروني" class="w-full h-40 object-cover rounded mb-4">
-                            <h3 class="text-xl font-semibold mb-2">منصة تعليم إلكتروني</h3>
-                            <p class="text-gray-600 mb-4">تطوير منصة تعليمية تفاعلية تتيح للمستخدمين الوصول إلى الدورات وتتبع تقدمهم.</p>
-                            <p class="text-primary font-semibold">التقنيات: Vue.js, Vuex, Node.js, MongoDB</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-                            <img src="To-do-App.png" alt="تطبيق إدارة المهام" class="w-full h-40 object-cover rounded mb-4">
-                            <h3 class="text-xl font-semibold mb-2">تطبيق إدارة المهام</h3>
-                            <p class="text-gray-600 mb-4">تصميم وتطوير تطبيق ويب لإدارة المهام والمشاريع، مع ميزات التعاون وتتبع الوقت.</p>
-                            <p class="text-primary font-semibold">التقنيات: React, Redux, Firebase</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="skills" class="mb-16">
-                    <h2 class="text-4xl font-bold mb-6 text-secondary">المهارات</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
-                            <i data-lucide="html" class="w-6 h-6 ml-2 text-primary"></i>
-                            <span>HTML5</span>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
-                            <i data-lucide="css" class="w-6 h-6 ml-2 text-primary"></i>
-                            <span>CSS3</span>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
-                            <i data-lucide="code" class="w-6 h-6 ml-2 text-primary"></i>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
-                            <i data-lucide="react" class="w-6 h-6 ml-2 text-primary"></i>
-                            <span>React</span>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
-                            <i data-lucide="vue" class="w-6 h-6 ml-2 text-primary"></i>
-                            <span>Vue.js</span>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
-                            <i data-lucide="server" class="w-6 h-6 ml-2 text-primary"></i>
-                            <span>Node.js</span>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
-                            <i data-lucide="database" class="w-6 h-6 ml-2 text-primary"></i>
-                            <span>MongoDB</span>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
-                            <i data-lucide="git-branch" class="w-6 h-6 ml-2 text-primary"></i>
-                            <span>Git</span>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="testimonials" class="mb-16">
-                    <h2 class="text-4xl font-bold mb-6 text-secondary">آراء العملاء</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <p class="text-gray-600 mb-4">"موسى مطور رائع! لقد قام بتطوير موقعنا بكفاءة عالية وفي الوقت المحدد. نحن سعداء بالنتائج."</p>
-                            <p class="font-semibold">- أحمد محمد، مدير شركة تقنية</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <p class="text-gray-600 mb-4">"العمل مع موسى كان تجربة رائعة. لديه مهارات تقنية ممتازة وقدرة على فهم احتياجات العملاء."</p>
-                            <p class="font-semibold">- سارة علي، صاحبة متجر إلكتروني</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="contact" class="mb-16">
-                    <h2 class="text-4xl font-bold mb-6 text-secondary">اتصل بي</h2>
-                    <form class="bg-white p-6 rounded-lg shadow-md">
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 font-semibold mb-2">الاسم</label>
-                            <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 font-semibold mb-2">البريد الإلكتروني</label>
-                            <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="message" class="block text-gray-700 font-semibold mb-2">الرسالة</label>
-                            <textarea id="message" name="message" rows="4" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
-                        </div>
-                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-primary-dark transition flex items-center justify-center w-full md:w-auto">
-                            <i data-lucide="send" class="w-4 h-4 ml-2"></i>
-                            إرسال
-                        </button>
-                    </form>
-                </section>
-            </main>
-
-            <footer class="bg-secondary text-white py-8">
-                <div class="container mx-auto text-center">
-                    <p class="mb-4">&copy; 2023 موسى عمر. جميع الحقوق محفوظة.</p>
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="hover:text-primary transition"><i data-lucide="github" class="w-6 h-6"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+    <!-- Hero Section -->
+    <section id="home" class="relative hero-bg min-h-screen flex items-center pt-16">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-primary-900/60 dark:from-black/80 dark:to-primary-900/80"></div>
+        <div class="container mx-auto px-4 relative z-10 py-20">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">نبتكر <span class="gradient-text">المستقبل</span> الرقمي</h1>
+                    <p class="text-xl text-gray-200 mb-8 leading-relaxed">نحن فريق تقني ليبي متخصص في تطوير التكنولوجيا والذكاء الاصطناعي بلمسة إبداعية حديثة</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#services" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-full transition-theme neon-border-primary">خدماتنا</a>
+                        <a href="#contact" class="glass text-white font-bold py-3 px-8 rounded-full transition-theme hover:bg-white/20">تواصل معنا</a>
                     </div>
                 </div>
-            </footer>
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="glass p-10 rounded-3xl shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80" alt="Technology" class="w-full h-auto max-w-md mx-auto rounded-2xl">
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-slate-800 transition-theme overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">من <span class="gradient-text">نحن</span></h2>
+                <div class="w-24 h-1 bg-primary-500 dark:bg-primary-400 mx-auto"></div>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <div class="w-full h-auto rounded-3xl overflow-hidden neon-border-primary">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Technology Team" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <div class="absolute top-4 left-4 glass p-4 rounded-xl shadow-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center text-primary-600 dark:text-primary-300">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold">تطوير</div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">+50 مشروع</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 right-4 glass p-4 rounded-xl shadow-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-accent-100 dark:bg-accent-900 flex items-center justify-center text-accent-600 dark:text-accent-300">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold">عملاء</div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">+100 عميل</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-6">نبذة عنّا</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-lg">
+                        نحن فريق Technology Team، نعمل على تطوير التكنولوجيا والذكاء الاصطناعي بلمسة إبداعية حديثة. هدفنا هو رفع اسم ليبيا في عالم التكنولوجيا من خلال تقديم حلول متقدمة تشمل تطوير البوتات الذكية، تصميم الواقع الافتراضي (VR) والواقع المعزز (AR)، إنشاء محتوى CGI احترافي، وتصميم وتطوير التطبيقات والمواقع الحديثة.
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-lg">
+                        نسعى للابتكار، ونطمح إلى أن نكون جزءًا من المستقبل الرقمي العالمي، مع التركيز على تقديم تجارب متميزة واحترافية.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="glass-card p-5 rounded-xl">
+                            <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 flex items-center justify-center text-primary-600 dark:text-primary-300 mb-3">
+                                <i class="fas fa-lightbulb text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">الابتكار</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">نبتكر حلول تقنية فريدة</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <div class="w-12 h-12 rounded-lg bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center text-secondary-600 dark:text-secondary-300 mb-3">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">العمل الجماعي</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">نعمل كفريق متكامل</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <div class="w-12 h-12 rounded-lg bg-accent-100 dark:bg-accent-900 flex items-center justify-center text-accent-600 dark:text-accent-300 mb-3">
+                                <i class="fas fa-rocket text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">التطور المستمر</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">نواكب أحدث التقنيات</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gray-100 dark:bg-slate-900 transition-theme">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">+50</div>
+                    <div class="text-gray-600 dark:text-gray-400">مشروع منجز</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">+100</div>
+                    <div class="text-gray-600 dark:text-gray-400">عميل سعيد</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">+20</div>
+                    <div class="text-gray-600 dark:text-gray-400">خبير تقني</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">+5</div>
+                    <div class="text-gray-600 dark:text-gray-400">سنوات خبرة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white dark:bg-slate-800 transition-theme overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4"><span class="gradient-text">خدماتنا</span></h2>
+                <div class="w-24 h-1 bg-primary-500 dark:bg-primary-400 mx-auto"></div>
+                <p class="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">نقدم مجموعة متنوعة من الخدمات التقنية المتطورة لتلبية احتياجات عملائنا</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden neon-border-primary">
+                    <div class="h-3 bg-gradient-to-r from-primary-500 to-primary-300 dark:from-primary-400 dark:to-primary-200"></div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-2xl bg-primary-100 dark:bg-primary-900 flex items-center justify-center text-primary-600 dark:text-primary-300 mb-6">
+                            <i class="fas fa-robot text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">تطوير البوتات الذكية</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">نقوم بتطوير بوتات ذكية مدعومة بالذكاء الاصطناعي لتحسين تجربة المستخدم وأتمتة العمليات المختلفة.</p>
+                        <a href="#contact" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium">
+                            اطلب الخدمة
+                            <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden neon-border-secondary">
+                    <div class="h-3 bg-gradient-to-r from-secondary-500 to-secondary-300 dark:from-secondary-400 dark:to-secondary-200"></div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-2xl bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center text-secondary-600 dark:text-secondary-300 mb-6">
+                            <i class="fas fa-vr-cardboard text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">الواقع الافتراضي والمعزز</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">نصمم تجارب واقع افتراضي (VR) وواقع معزز (AR) مبتكرة لمختلف المجالات التعليمية والترفيهية والتجارية.</p>
+                        <a href="#contact" class="inline-flex items-center text-secondary-600 dark:text-secondary-400 font-medium">
+                            اطلب الخدمة
+                            <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden neon-border-accent">
+                    <div class="h-3 bg-gradient-to-r from-accent-500 to-accent-300 dark:from-accent-400 dark:to-accent-200"></div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-2xl bg-accent-100 dark:bg-accent-900 flex items-center justify-center text-accent-600 dark:text-accent-300 mb-6">
+                            <i class="fas fa-film text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">محتوى CGI احترافي</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">ننتج محتوى رسومات كمبيوتر (CGI) عالي الجودة للأفلام والإعلانات والتسويق الرقمي.</p>
+                        <a href="#contact" class="inline-flex items-center text-accent-600 dark:text-accent-400 font-medium">
+                            اطلب الخدمة
+                            <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden neon-border-primary">
+                    <div class="h-3 bg-gradient-to-r from-primary-500 to-primary-300 dark:from-primary-400 dark:to-primary-200"></div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-2xl bg-primary-100 dark:bg-primary-900 flex items-center justify-center text-primary-600 dark:text-primary-300 mb-6">
+                            <i class="fas fa-mobile-alt text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">تطوير التطبيقات</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">نطور تطبيقات الهواتف الذكية والويب بتقنيات حديثة وتصميم سهل الاستخدام لمختلف المنصات.</p>
+                        <a href="#contact" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium">
+                            اطلب الخدمة
+                            <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="glass-card rounded-2xl overflow-hidden neon-border-secondary">
+                    <div class="h-3 bg-gradient-to-r from-secondary-500 to-secondary-300 dark:from-secondary-400 dark:to-secondary-200"></div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-2xl bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center text-secondary-600 dark:text-secondary-300 mb-6">
+                            <i class="fas fa-globe text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">تصميم وتطوير المواقع</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">نصمم ونطور مواقع ويب عصرية وسريعة ومتجاوبة مع جميع الأجهزة لتعزيز حضورك الرقمي.</p>
+                        <a href="#contact" class="inline-flex items-center text-secondary-600 dark:text-secondary-400 font-medium">
+                            اطلب الخدمة
+                            <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="glass-card rounded-2xl overflow-hidden neon-border-accent">
+                    <div class="h-3 bg-gradient-to-r from-accent-500 to-accent-300 dark:from-accent-400 dark:to-accent-200"></div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-2xl bg-accent-100 dark:bg-accent-900 flex items-center justify-center text-accent-600 dark:text-accent-300 mb-6">
+                            <i class="fas fa-brain text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">حلول الذكاء الاصطناعي</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">نقدم حلول ذكاء اصطناعي مخصصة لتحسين الكفاءة وتحليل البيانات واتخاذ القرارات الذكية.</p>
+                        <a href="#contact" class="inline-flex items-center text-accent-600 dark:text-accent-400 font-medium">
+                            اطلب الخدمة
+                            <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-gray-100 dark:bg-slate-900 transition-theme">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4"><span class="gradient-text">فريقنا</span></h2>
+                <div class="w-24 h-1 bg-primary-500 dark:bg-primary-400 mx-auto"></div>
+                <p class="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">مجموعة من المبدعين والخبراء المتخصصين في مجالات التكنولوجيا المختلفة</p>
+            </div>
+            
+            <!-- Single Team Member - Bn0mar -->
+            <div class="max-w-md mx-auto">
+                <div class="glass-card rounded-2xl overflow-hidden transition-theme neon-border-primary">
+                    <div class="p-8 text-center">
+                        <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-primary-100 dark:bg-primary-800 neon-border-primary">
+                            <div class="w-full h-full flex items-center justify-center text-6xl">
+                                🤖
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Bn0mar</h3>
+                        <p class="text-primary-600 dark:text-primary-400 mb-4 text-lg">مطور واجهات ومطور بوتات</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">خبير في تطوير واجهات المستخدم وبرمجة البوتات الذكية باستخدام أحدث التقنيات. متخصص في تصميم تجارب مستخدم فريدة ومبتكرة تجمع بين الجمال والوظائف العملية.</p>
+                        <div class="flex justify-center space-x-4 space-x-reverse">
+                            <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-theme">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-theme">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-theme">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-theme">
+                                <i class="fab fa-medium"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-slate-800 transition-theme">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4"><span class="gradient-text">تواصل معنا</span></h2>
+                <div class="w-24 h-1 bg-primary-500 dark:bg-primary-400 mx-auto"></div>
+                <p class="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">نحن هنا للإجابة على استفساراتك ومناقشة مشاريعك. تواصل معنا اليوم!</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="glass-card rounded-2xl p-8 neon-border-primary">
+                        <h3 class="text-2xl font-bold mb-6">أرسل لنا رسالة</h3>
+                        <form>
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">الاسم</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-theme">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">البريد الإلكتروني</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-theme">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">الموضوع</label>
+                                <select id="subject" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-theme">
+                                    <option value="">اختر الموضوع</option>
+                                    <option value="bot">تطوير بوت</option>
+                                    <option value="vr">الواقع الافتراضي</option>
+                                    <option value="cgi">محتوى CGI</option>
+                                    <option value="app">تطوير تطبيق</option>
+                                    <option value="web">تطوير موقع</option>
+                                    <option value="ai">حلول ذكاء اصطناعي</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">الرسالة</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-theme"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-xl transition-theme neon-border-primary">إرسال الرسالة</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="glass-card rounded-2xl p-8 h-full neon-border-secondary">
+                        <h3 class="text-2xl font-bold mb-6">معلومات التواصل</h3>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900 flex items-center justify-center text-primary-600 dark:text-primary-300 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-1">العنوان</h4>
+                                    <p class="text-gray-600 dark:text-gray-400">طرابلس، ليبيا</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center text-secondary-600 dark:text-secondary-300 flex-shrink-0">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-1">البريد الإلكتروني</h4>
+                                    <p class="text-gray-600 dark:text-gray-400">info@technologyteam.ly</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900 flex items-center justify-center text-accent-600 dark:text-accent-300 flex-shrink-0">
+                                    <i class="fas fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-1">الهاتف</h4>
+                                    <p class="text-gray-600 dark:text-gray-400">+218 91 234 5678</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            <h4 class="text-lg font-semibold mb-4">تابعنا على</h4>
+                            <div class="flex space-x-4 space-x-reverse">
+                                <a href="#" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-blue-500 dark:text-blue-400 hover:neon-border-secondary transition-theme">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-sky-500 dark:text-sky-400 hover:neon-border-secondary transition-theme">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-pink-500 dark:text-pink-400 hover:neon-border-secondary transition-theme">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-blue-700 dark:text-blue-400 hover:neon-border-secondary transition-theme">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10 p-6 glass rounded-xl">
+                            <h4 class="text-lg font-semibold mb-4">ساعات العمل</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">الأحد - الخميس:</span>
+                                    <span class="font-medium">9:00 ص - 5:00 م</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">الجمعة:</span>
+                                    <span class="font-medium">9:00 ص - 12:00 م</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">السبت:</span>
+                                    <span class="font-medium">مغلق</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-slate-950 text-white py-16 transition-theme">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold mb-6 gradient-text">Technology Team</h3>
+                    <p class="text-gray-400 mb-6">نعمل على تطوير التكنولوجيا والذكاء الاصطناعي بلمسة إبداعية حديثة.</p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white transition-theme">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-theme">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-theme">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-theme">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:col-span-1">
+                    <h3 class="text-xl font-bold mb-6">روابط سريعة</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> الرئيسية</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> من نحن</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> خدماتنا</a></li>
+                        <li><a href="#team" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> فريقنا</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-1">
+                    <h3 class="text-xl font-bold mb-6">خدماتنا</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> تطوير البوتات الذكية</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> الواقع الافتراضي والمعزز</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> محتوى CGI احترافي</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> تطوير التطبيقات</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-theme flex items-center"><i class="fas fa-chevron-left ml-2 text-xs"></i> تصميم وتطوير المواقع</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-1">
+                    <h3 class="text-xl font-bold mb-6">النشرة الإخبارية</h3>
+                    <p class="text-gray-400 mb-4">اشترك في نشرتنا الإخبارية للحصول على آخر الأخبار والتحديثات.</p>
+                    <form class="flex flex-col sm:flex-row gap-2">
+                        <input type="email" placeholder="البريد الإلكتروني" class="px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 bg-gray-800 text-white w-full transition-theme">
+                        <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-xl transition-theme neon-border-primary">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Technology Team. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 left-6 w-12 h-12 rounded-full bg-primary-600 text-white flex items-center justify-center shadow-lg transform scale-0 transition-transform duration-300 hover:bg-primary-700 neon-border-primary">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- JavaScript -->
     <script>
-        lucide.createIcons();
-
-        // Sidebar toggle
-        const sidebar = document.querySelector('.sidebar');
-        const openSidebarBtn = document.getElementById('open-sidebar');
-        const closeSidebarBtn = document.getElementById('close-sidebar');
-
-        openSidebarBtn.addEventListener('click', () => {
-            sidebar.classList.add('open');
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // Check for saved theme preference or use system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        // Active Link Indicator
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.querySelector('span').style.width = '0';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.querySelector('span').style.width = '100%';
+                }
+            });
         });
-
-        closeSidebarBtn.addEventListener('click', () => {
-            sidebar.classList.remove('open');
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.replace('scale-0', 'scale-100');
+            } else {
+                backToTopButton.classList.replace('scale-100', 'scale-0');
+            }
         });
-
-        // Smooth scrolling for navigation links
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-                if (window.innerWidth < 768) {
-                    sidebar.classList.remove('open');
-                }
             });
         });
-
-        // Animate elements on scroll
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate__animated');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementBottom = element.getBoundingClientRect().bottom;
-                if (elementTop < window.innerHeight && elementBottom > 0) {
-                    element.classList.add('animate__fadeInUp');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll(); // Initial check on page load
     </script>
 </body>
-</html>
+    </html>
